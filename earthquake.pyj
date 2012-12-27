@@ -3,7 +3,7 @@ earthquakes.freq = MINUTELY
 earthquakes.interval = 2
 
 
-@url_index.map_reader
+@earthquakes.map_reader
 def read_csv(stream, size, url, params):
   from csv import DictReader
   return enumerate(DictReader(stream))
