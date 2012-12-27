@@ -8,10 +8,10 @@ def read_csv(stream, size, url, params):
   from csv import DictReader
   return enumerate(DictReader(stream))
   
-@earthquakes.map
-def map(line, params):
- print line
- yield line
+#@earthquakes.map
+#def map(line, params):
+# print line
+# yield line
   
 @earthquakes.reduce
 def reduce(iter,params):
