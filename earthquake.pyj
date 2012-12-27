@@ -3,15 +3,15 @@ earthquakes.freq = MINUTELY
 earthquakes.interval = 2
 
 
-#earthquakes._partitions=1
-
+@url_index.map_reader
+def read_csv(stream, size, url, params):
+  from csv import DictReader
+  return enumerate(DictReader(stream))
+  
 @earthquakes.map
 def map(line, params):
-  if not hasattr(params, 'keys'):
-    params.keys = line.split(',')
-  else:
-    values = line.split(',')
-    yield '', dict(zip(params.keys,values))
+ print line
+ yield line
   
 @earthquakes.reduce
 def reduce(iter,params):
