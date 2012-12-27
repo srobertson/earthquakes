@@ -4,6 +4,12 @@ earthquakes.interval = 2
 
 
 #earthquakes._partitions=1
+
+@earthquakes.map
+def map(record, params):
+  print record
+  yield '', record
+  
 @earthquakes.reduce
 def reduce(iter,params):
   for k,v in iter:
