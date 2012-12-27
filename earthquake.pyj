@@ -1,3 +1,10 @@
 earthquakes = rule('http://earthquake.usgs.gov/earthquakes/catalogs/eqs7day-M1.txt', 'earthquakes')
 earthquakes.freq = MINUTELY
 earthquakes.interval = 2
+
+
+#earthquakes._partitions=1
+@earthquakes.reduce
+def reduce(iter,params):
+  for k,v in iter:
+    yield k,v
